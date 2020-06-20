@@ -1,113 +1,262 @@
 import React, { Component } from 'react';
+import ReactPaginate from 'react-paginate';
+import UI from './UI';
+import {Link} from "react-router-dom";
 import MainNavBar from './MainNavBar';
 import Footer from './Footer';
- import {Link} from "react-router-dom";
- import './style.css'
 
- class ImgView extends Component{
+import './UI.css';
 
-  incrementValue(e){
-    
-    var value = parseInt(document.getElementById('number').value, 10);
-    value = isNaN(value) ? 0 : value;
-    if(value<10){
-        value=value+1;
-            document.getElementById('number').value = value;
+class ImgView extends Component{
+    constructor(props){
+        super(props);
+        this.state={
+            urlImg:'',
+            imgUrl:props.location.imgUrl,
+            brands:props.location.brands,
+            offset:0,
+            perPage:4,
+            img:'',
+            name:'',
+            code:'',
+            brand:'',
+            color:'',
+            material:'',
+            price:'',
+            type:'',
+            size:'',
+            category:'',
+            propsimg:props.location.img,
+            propsname:props.location.name,
+            propscode:props.location.code,
+            propsbrand:props.location.brand,
+            propscolor:props.location.color,
+            propsmaterial:props.location.material,
+            propsprice:props.location.price,
+            propstype:props.location.type,
+            propssize:props.location.size_type,
+            propscategory:props.location.category_name
+        };
+
+      console.log(this.state.propsimg)
+      console.log(this.state.brands)
+
     }
-}
+ componentDidMount(){
 
-decrementValue(e)
-{
-    var value = parseInt(document.getElementById('number').value, 10);
-    value = isNaN(value) ? 0 : value;
-    if(value>1){
-        value--;
-            document.getElementById('number').value = value;
+
+
+       
+    //     const url="http://localhost/php_rest_myblog/api/post/read.php";
+    //     const response=await fetch(url
+    //       ,
+    //       {
+    //         method: 'GET',
+    //       // mode: "no-cors",
+    //       //  headers: {
+    //       //     'Accept': 'application/json',
+    //       //     'Content-Type': 'application/json',
+    //       // }
+    //     }
+      
+    //   );
+    //     const data= await response.json();
+    //    this.setState({brands:data.data});
+    //    console.log(this.state.brands)
+  
+    //   this.setState({
+    //       urlImg:(this.props.urlImg),
+    //     brands:(this.props.brands),
+    //     propsname:(this.props.name),
+    //     propscode:(this.props.code),
+    //     propsbrand:(this.props.brand),
+    //     propsprice:(this.props.price),
+    //     propsmaterial:(this.props.material),
+    //     propstype:(this.props.type),
+    //     propscolor:(this.props.color),
+    //     propscategory:(this.props.category),
+    //     propssize:(this.props.size),
+    //     propsimg:(this.props.src)
+        
+    // })
+    this.setState({
+        pageCount: Math.ceil(this.state.brands.length / this.state.perPage),
+      })
+
+ 
     }
-}
 
+    handlePageClick=(e)=>{
+        const selectedPage = e.selected;
+
+        const offset = selectedPage * this.state.perPage;
+      
+        console.log(e.selected);
+        this.setState({
+            currentPage: e.selectedPage,
+            offset: offset
+        });
+    }
+    img =(img,name,code,brand,color,material,price,type,category_name,size_type) =>{
+        this.setState({
+            propsimg: img,
+            propsname: name,
+           propscode: code,
+            propsbrand: brand,
+            propscolor: color,
+            propsprice: price,
+            propstype: type,
+            propsmaterial: material,
+            propscategory: category_name,
+            propssize: size_type
+  
+  
+        })
+        
+    }
     render(){
+       
+      const  slice=this.state.brands.slice(this.state.offset,this.state.offset+this.state.perPage)
 
+    
+        // console.log(this.props.brands)
         return(
             <div>
                 <MainNavBar/>
+            <div className="container-fluid">
+                 {/* breadcrumb */}
                 
-            <div className="ui breadcrumb" style={{backgroundColor:'white',marginTop:'10px',position:'absolute'}}>
-            <Link to="/mainpage">Home</Link>
-            <i className="right angle icon divider"></i>
-            <Link className="section" to="/BrandFullPage">Brands</Link> 
-            <i className="right angle icon divider"></i>
-            <Link className="section" to="/khaadiUI">Khaadi</Link> 
-            <i className="right angle icon divider"></i>
-        <div className="active section" style={{textTransform:'capitalize'}}>{this.props.brand} {this.props.material} {this.props.type} {this.props.category} {this.props.size}</div>
-       
-            </div>
-            <hr style={{ borderWidth:'2px',width:'99%',marginLeft:'10px',marginTop:'50px'}}></hr>
+         <nav aria-label="breadcrumb" >
+             <ol className="breadcrumb" >
+              <li className="breadcrumb-item">Home</li>
+              <i className="right angle icon divider"></i>
+              <li className="breadcrumb-item">Brands</li>
+              <i className="right angle icon divider"></i>
+              <li className="breadcrumb-item">{this.state.propsbrand}</li>
+              <i className="right angle icon divider"></i>
+              <li className="breadcrumb-item active" aria-current="page">{this.state.propsbrand} {this.state.propsmaterial} {this.state.propstype} {this.state.propscategory} {this.state.propssize}</li>
+               </ol>   
+               <hr style={{marginTop:'-20px'}}></hr>
+               </nav>
+            
 
+            <div className="row pt-3 pb-3 bg-light">
+                <div className="col-lg-5 col-md-6 px-lg-5 px-md-5 ">
+                    <img className="propImg" src={this.state.propsimg}></img>
 
-         <div className="jumbotron jumbotron-fluid" style={{backgroundColor:'white',width:'99%',height:'140vh',marginLeft:'10px',overflow:'hidden'}}>
-         <div style={{width:'90%' ,marginTop:'-30px', marginLeft:'20px',position:'absolute'}}>
-         <h1 style={{textTransform:'capitalize',fontFamily:"Geneva"}}>{this.props.brand} {this.props.material} {this.props.type} {this.props.category} {this.props.size}</h1>
-         <h4 style={{fontFamily:"Geneva"}} >{this.props.name}</h4> 
-        <div className="img-wrapper ">
-             <img src={this.props.src} className="inner-img"  style={{float:'right',width:'30%',marginTop:'50px'}}/>
-             </div>
-         <div style={{width:'32%',overflow:'hidden'}}>
-        
-         <h4 style={{fontSize:'17px',marginTop:'30px',textAlign:'center',float:'right'}}> DESCRIPTION<hr  style={{backgroundColor:'pink',borderRadius:"20px",borderWidth:'5px',
-        marginTop:'5px'}}></hr></h4>
-        {/* <hr style={{backgroundColor:'black',borderWidth:'5px',width:'12%',position:'absolute',marginLeft:'250px',marginTop:'50px'}}></hr> */}
-        <ul style={{marginTop:"80px",fontFamily:"Geneva",fontSize:'17px',textTransform:'capitalize',listStyle:'none'}}>
-        <li style={{marginLeft:'-40px'}}><p>{this.props.type} &nbsp; {this.props.material} &nbsp; {this.props.category}</p></li>
-        <li style={{marginTop:'10px',marginLeft:'-40px'}}><strong>Manufacturer: </strong>{this.props.brand}</li>
-        <li style={{marginTop:'10px',marginLeft:'-40px'}}><strong>Fabric:</strong>{this.props.material}</li>
-        <li style={{marginTop:'10px',marginLeft:'-40px'}}><strong>Type:</strong>{this.props.type}</li>
-        <li style={{marginTop:'10px',marginLeft:'-40px'}}><strong>Color:</strong>{this.props.color}</li>
-        <li style={{marginTop:'10px',marginLeft:'-40px'}}><strong>Size:</strong>{this.props.size}</li>
-        <li style={{marginTop:'10px',marginLeft:'-40px'}}><strong>Category:</strong>{this.props.category}</li>
-       
-        </ul>
-        </div>
-        <div className='container 'style={{width:'65%',boxShadow:'2px 3px 8px 2px #9e9e9e',float:'left'
-        ,marginTop:'20px' ,height:'60vh',position:'absolute'}}>
-
-       <center><h1 style={{marginTop:'60px',letterSpacing:'1px',fontWeight:'1200',
-       fontFamily:"Geneva",color:'#ad1457'}}>PKR {this.props.price}</h1>
-                 </center> 
-                 <hr style={{width:'30%',borderWidth:'1px',backgroundColor:'#e0e0e0'}}></hr>
-
-<div style={{backgroundColor:'red',width:'50%',marginLeft:'20px',marginLeft:'90px'}}>
-  <div className="ui small icon input" style={{marginTop:'15px',
- borderColor:'black',fontSize:"15px",fontWeight:'bold',float:'right'}} >
-
-<button className="ui icon button" onClick={()=>this.decrementValue()} value="-" >
-<i class="minus icon"></i>
-</button>
-
-<input type="text" name="quantity" value="1" maxlength="2" max="10" size="1" id="number" style={{textAlign:'center'}}/>
-<button className="ui icon button" onClick={()=>this.incrementValue()} value="+" >
-<i class="plus icon"></i>
-</button>
-</div>
-</div>
-
-<div style={{width:'100%',marginTop:'80px'}}>
-<center><button className="ui red button" style={{width:'35%',letterSpacing:'1px',fontWeight:'1200',fontSize:'15px',
-       fontFamily:"Geneva",backgroundColor:'#ad1457',whiteSpace:'nowrap'}}>Add To Cart</button></center>
-</div>
-
-
-        </div>
+                </div>
+                <div className="col-lg-7 col-md-6 pt-lg-2 pt-md-2 pt-sm-4 pt-4 px-lg-5 px-md-5 px-sm-4 px-4">
+                  <p className="propfirstheading ">{this.state.propscategory}</p>  
+                  <p className="propname ">{this.state.propsname}</p>
+                  <p className="propprice">PKR {this.state.propsprice}</p>
+                  <p className="propcolor"><span className="propsubhead">COLOR:</span>&nbsp; {this.state.propscolor}</p>
+                 <span class="dot mb-3" style={{backgroundColor:`${this.state.propscolor}`,height:'30px',width:"30px"}}></span>
      
-         </div>
-      
-        </div>
+                 <p className="propsubhead1">QTR: &nbsp; &nbsp; <span className="quantitycalculator px-2 p-1"><i class="minus icon small"></i><input type="number"></input><i class="plus icon small"></i></span></p>
+                 <button className="btn addcartbtn px-5 mt-4 pt-2 pb-2">Add to Cart</button>
 
-                <Footer/>
+                 <h4>ADDITIONAL INFORMATION</h4>
+                 <hr></hr>
+                 <table className="additionaltable">
+                     <tr>
+                         <th  className="px-4 pt-2 pb-2" >SKU</th>
+                         <td className="td px-4 pt-2 pb-2">{this.state.propsname}</td>
+                     </tr>
+                     <tr>
+                         <th className="px-4 pt-2 pb-2">Brand</th>
+                         <td className=" td px-4 pt-2 pb-2">{this.state.propsbrand}</td>
+                     </tr>
+                     <tr>
+                         <th className="px-4 pt-2 pb-2">Material</th>
+                         <td className=" td px-4 pt-2 pb-2">{this.state.propsmaterial}</td>
+                     </tr>
+                     <tr>
+                         <th className="px-4 pt-2 pb-2">Color</th>
+                         <td className=" td px-4 pt-2 pb-2">{this.state.propscolor}</td>
+                     </tr>
+                     <tr>
+                         <th className="px-4 pt-2 pb-2">Size</th>
+                         <td className=" td px-4 pt-2 pb-2">{this.state.propssize}</td>
+                     </tr>
+                     <tr>
+                         <th className="px-4 pt-2 pb-2">Type</th>
+                         <td className=" td px-4 pt-2 pb-2">{this.state.propstype}</td>
+                     </tr>
+                     <tr>
+                         <th className="px-4 pt-2 pb-2">Code</th>
+                         <td className=" td px-4 pt-2 pb-2">{this.state.propscode}</td>
+                     </tr>
+                     <tr>
+                         <th className="px-4 pt-2 pb-2">Category</th>
+                         <td className=" td px-4 pt-2 pb-2">{this.state.propscategory}</td>
+                     </tr>
+                 </table>
+
+
+                </div>
             </div>
+
+            <div className='row'>
+         
+              
+                <div className="likecol col-lg-4 col-md-7 pt-lg-5 pt-md-5 pt-4">
+                <h2 className="youmaylikeheading pt-5"><span>YOU MAY ALSO LIKE</span></h2>
+                </div>
+                </div>
+                <div className="row pt-5">
+             
+                {slice.map(brand=>
+
+                   <div className="col-lg-3 col-md-6 col-sm-6 col-6 px-lg-5 px-md-5 " >
+                      
+                      <img src={this.state.imgUrl + brand.image} className="youmaypics" 
+                      
+
+                      
+                    onClick={() =>this.img(this.state.imgUrl
+                                                  + brand.image ,(brand.name),(brand.code),(brand.brand),
+                                                      (brand.color) ,(brand.material ),(brand.price),  (brand.type),
+                                                        (brand.category_name) ,(brand.size_type)
+                                                      )} />
+                                                      
+                      <div className="row">
+                                                     <div className="col-lg-7 col-md-7 col-12" >
+                                                      <p className="brandsdatacategory mt-2" > {brand.category_name}  </p>
+                                                      </div>
+                                                      <div className="col-lg-5 col-md-5 col-12 " style={{fontSize:"13px"}} >
+                                                      <p className="brandsdataprice">PKR {brand.price}</p>
+                                                      </div>
+                                                   </div>
+                                                  
+                                                   
+                                                   
+                                          
+                      
+                    
+                   </div>
+                   
+)}
+       
+                   </div>
+              <div className="mt-5 ">
+                   <ReactPaginate 
+                      previousLabel={"<"}
+                      nextLabel={">"}
+                      breakLabel={"..."}
+                      breakClassName={"break-me"}
+                      pageCount={this.state.pageCount}
+                      marginPagesDisplayed={2}
+                      pageRangeDisplayed={5}
+                      onPageChange={this.handlePageClick}
+                      containerClassName={"pagination"}
+                      subContainerClassName={"pages pagination"}
+                      activeClassName={"active"}/>
+                      </div>
+            </div>
+            <Footer/>
+            </div>
+
         )
     }
-
-
- }
- export default ImgView;
+}
+export default ImgView;

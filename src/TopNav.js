@@ -14,18 +14,20 @@ class TopNav extends Component{
     }
     this.logout= this.logout.bind(this);
 }
+
 logout(){
     sessionStorage.setItem("userData",'');
     sessionStorage.clear();
     this.setState({clear: true})
-    this.props.history.push('/login');
+    this.props.history.push('/mainpage');
     
 }
 
 
 render(){
 
-  console.log('props in topnav -> ',this.props);
+
+  // console.log('props in topnav -> ',this.props);
   if(sessionStorage.getItem("userData")){
 return(
   <nav className="navbar navbar-light " style={{backgroundColor: '#e57373'}}>

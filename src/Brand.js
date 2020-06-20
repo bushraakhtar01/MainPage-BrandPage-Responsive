@@ -7,6 +7,7 @@ import {Link} from "react-router-dom";
 
 
 
+
 class Brand extends Component{
 
 
@@ -63,7 +64,16 @@ class Brand extends Component{
          <div className="card brandspiccard">
          <img className="card-img-top" src="ak.png" ></img>
          </div>
-         <h3 className="brandspicheading">Alkaram</h3>
+         <Link to={{
+           pathname:'/UI',
+           props:   'http://localhost/sapphire/api/post/read.php',
+           props1:   'http://localhost/sapphire/api/post/'
+
+        }}>
+         <h3 className="brandspicheading" onClick={function(){
+             localStorage.removeItem("url")
+             localStorage.setItem("url","http://localhost/sapphire/api/post/read.php")
+          }}>Alkaram</h3></Link>
          </div>
 
          {/* 3rd brand      */}
@@ -156,7 +166,7 @@ class Brand extends Component{
          <div className="card brandspiccard" >
           <img className="card-img-top" src="ed.png" ></img>
          </div>
-         <h3>Edenrobe</h3>
+         <h3 className="brandspicheading">Edenrobe</h3>
          </div>
 
                {/* 1s brand */}
@@ -164,7 +174,7 @@ class Brand extends Component{
          <div className="card brandspiccard" >
           <img className="card-img-top" src="eg.png" ></img>
          </div>
-         <h3>Ego</h3>
+         <h3 className="brandspicheading">Ego</h3>
          </div>
 
                {/* 1s brand */}
@@ -172,7 +182,7 @@ class Brand extends Component{
          <div className="card brandspiccard" >
           <img className="card-img-top" src="et.png" ></img>
          </div>
-         <h3>Ethnic</h3>
+         <h3 className="brandspicheading">Ethnic</h3>
          </div>
          </div>
 
@@ -186,7 +196,7 @@ class Brand extends Component{
          <div className="card brandspiccard" >
           <img className="card-img-top" src="fs.png" ></img>
          </div>
-         <h3>Edenrobe</h3>
+         <h3 className="brandspicheading" >Edenrobe</h3>
          </div>
          </div>
 
@@ -200,14 +210,23 @@ class Brand extends Component{
          <div className="card brandspiccard" >
           <img className="card-img-top" src="gn.png" ></img>
          </div>
-         <h3>Generation</h3>
+         <h3 className="brandspicheading" >Generation</h3>
          </div>
                {/* 2nd brand */}
                <div className="col-md-3 col-6">
          <div className="card brandspiccard" >
           <img className="card-img-top" src="gul.png" ></img>
          </div>
-         <h3>Gul Ahmed</h3>
+         <Link to={{
+           pathname:'/UI',
+           props:   'http://localhost/sapphire/api/post/read.php',
+           props1:   'http://localhost/sapphire/api/post/'
+
+        }}>
+         <h3 className="brandspicheading" onClick={function(){
+             localStorage.removeItem("url")
+             localStorage.setItem("url","http://localhost/sapphire/api/post/read.php")
+          }}>Gul Ahmed</h3></Link>
          </div>
          </div>
 
@@ -221,7 +240,7 @@ class Brand extends Component{
          <div className="card brandspiccard" >
           <img className="card-img-top" src="j.png" ></img>
          </div>
-         <h3>Junaid Jamshed</h3>
+         <h3 className="brandspicheading" >Junaid Jamshed</h3>
          </div>
          </div>
 
@@ -235,7 +254,15 @@ class Brand extends Component{
          <div className="card brandspiccard" >
           <img className="card-img-top" src="kd.png" ></img>
          </div>
-         <h3>Khaadi</h3>
+        <Link to={{
+           pathname:'/UI',
+           props:   'http://localhost/php_rest_myblog/api/post/read.php',
+           props1:   'http://localhost/php_rest_myblog/api/post/'
+
+        }}> <h3 className="brandspicheading"  onClick={function(){
+         localStorage.removeItem("url")
+         localStorage.setItem("url","http://localhost/php_rest_myblog/api/post/read.php")
+      }}>Khaadi</h3></Link>
          </div>
          </div>
 
@@ -249,7 +276,7 @@ class Brand extends Component{
          <div className="card brandspiccard" >
           <img className="card-img-top" src="lm.png" ></img>
          </div>
-         <h3>Lime Light</h3>
+         <h3 className="brandspicheading" >Lime Light</h3>
          </div>
          </div>
 
@@ -264,21 +291,21 @@ class Brand extends Component{
          <div className="card brandspiccard" >
           <img className="card-img-top" src="mb.png" ></img>
          </div>
-         <h3>Maria B</h3>
+         <h3 className="brandspicheading" >Maria B</h3>
          </div>
                {/* 2nd brand */}
                <div className="col-md-3 col-6">
          <div className="card brandspiccard" >
           <img className="card-img-top" src="mf.png" ></img>
          </div>
-         <h3>Motifz</h3>
+         <h3 className="brandspicheading" className="brandspicheading">Motifz</h3>
          </div>
                {/* 3rd brand */}
                <div className="col-md-3 col-6">
          <div className="card brandspiccard" >
           <img className="card-img-top" src="ms.png" ></img>
          </div>
-         <h3>Mausummery</h3>
+         <h3 className="brandspicheading" className="brandspicheading">Mausummery</h3>
          </div>
          </div>
 
@@ -291,8 +318,16 @@ class Brand extends Component{
          <div className="col-md-3 col-6">
          <div className="card brandspiccard" >
           <img className="card-img-top" src="nl.png" ></img>
-         </div>
-         <h3>NishatLinen</h3>
+         </div>  <Link to={{
+           pathname:'/UI',
+           props:   'http://localhost/sapphire/api/post/read.php',
+           props1:   'http://localhost/sapphire/api/post/'
+
+        }}>
+         <h3 className="brandspicheading" onClick={function(){
+             localStorage.removeItem("url")
+             localStorage.setItem("url","http://localhost/sapphire/api/post/read.php")
+          }}>NishatLinen</h3></Link>
          </div>
          </div>
 
@@ -306,7 +341,7 @@ class Brand extends Component{
          <div className="card brandspiccard" >
           <img className="card-img-top" src="OT.png" ></img>
          </div>
-         <h3>Outfitters</h3>
+         <h3 className="brandspicheading">Outfitters</h3>
          </div>
          </div>
 
@@ -318,16 +353,34 @@ class Brand extends Component{
                {/* 1s brand */}
          <div className="col-md-3 col-6">
          <div className="card brandspiccard" >
-          <img className="card-img-top" src="sn.png" ></img>
-         </div>
-         <h3>Sana Safinaz</h3>
+          <img className="card-img-top" src="sn.png"  ></img>
+         </div>  <Link to={{
+           pathname:'/UI',
+           props:   'http://localhost/sapphire/api/post/read.php',
+           props1:   'http://localhost/sapphire/api/post/'
+
+        }}>
+       
+         <h3 className="brandspicheading" onClick={function(){
+             localStorage.removeItem("url")
+             localStorage.setItem("url","http://localhost/sapphire/api/post/read.php")
+          }}>Sana Safinaz</h3></Link>
          </div>
               {/* 2nd brand */}
               <div className="col-md-3 col-6">
          <div className="card brandspiccard" >
           <img className="card-img-top" src="SP.png" ></img>
          </div>
-         <h3>Sapphire</h3>
+         <Link to={{
+           pathname:'/UI',
+           props:   'http://localhost/sapphire/api/post/read.php',
+           props1:   'http://localhost/sapphire/api/post/'
+
+        }}>
+         <h3 className="brandspicheading" onClick={function(){
+             localStorage.removeItem("url")
+             localStorage.setItem("url","http://localhost/sapphire/api/post/read.php")
+          }}>Sapphire</h3></Link>
          </div>
             
          </div>
@@ -342,7 +395,7 @@ class Brand extends Component{
          <div className="card brandspiccard" >
           <img className="card-img-top" src="wd.png" ></img>
          </div>
-         <h3 className="brandspicheading">Warda</h3>
+         <h3  className="brandspicheading">Warda</h3>
          </div>
          </div>
 

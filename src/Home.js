@@ -10,7 +10,7 @@ class Home extends Component{
     componentDidMount(){
         if(!sessionStorage.getItem("userData")){
             
-            this.props.history.push('/login')
+            this.props.history.push('/mainpage')
         }
     }
 

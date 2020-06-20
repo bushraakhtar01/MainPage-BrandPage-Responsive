@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 import  './carousel.css';
-import './scroll.js';
 
 
 

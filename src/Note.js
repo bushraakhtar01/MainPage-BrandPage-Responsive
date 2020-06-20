@@ -32,46 +32,7 @@ class Div extends Component{
                </div>
 
                 </div>
-            
-
-
-              
-
-        
-
-
           
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
           </div>
 
    

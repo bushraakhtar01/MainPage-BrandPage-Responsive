@@ -1,21 +1,15 @@
 import React, { Component } from 'react';    
 import { Link } from 'react-router-dom';
 import axios from "axios";
-
 import {PostData} from './services/PostData';
 import Khaadi from './Khaadi';
 import {Redirect} from "react-router-dom";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-
 import CreateApi from './CreateApi';
-
 import  AdminUI from './AdminUI';
-
 import Home from './Home';
 import Sapphire from './Sapphire';
 import CreateSapphire from './CreateSapphire';
-
-
 
 
 class Login extends Component {  
@@ -36,6 +30,7 @@ class Login extends Component {
       if(sessionStorage.getItem('userData')){
         this.props.history.push('/');
       }
+     
     }
     login(){
       if(this.state.email && this.state.password){
@@ -64,29 +59,12 @@ class Login extends Component {
 
         }
       
-    
-
-
-
     onChange(e){
         this.setState({[e.target.name]: e.target.value});
         
     }
     render() {  
-        console.log(sessionStorage);
-
-        console.log('props in login -> ',this.props);
-
-       
-
-        // if(sessionStorage.getItem('userData')){
-           
-        //    return(
-      
-        //    );
-    
-        //    } 
-          
+            
         return (  
             
             <div className="jumbotron " style={{ backgroundImage: 'url(logincover.jpg)',backgroundSize:'cover',width:'98%', height:'140vh'}}>

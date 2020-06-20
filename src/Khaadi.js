@@ -9,8 +9,7 @@ import Home from './Home';
 class Khaadi extends Component{
 
  
-  constructor(props)
-  {
+  constructor(props){
   super(props); 
   this.state={
       brands: [],
@@ -24,9 +23,9 @@ class Khaadi extends Component{
 
   async componentDidMount(){
 
-    if(!sessionStorage.getItem("userData")){
+    if(sessionStorage.getItem("userData")===""){
         
-      this.props.history.push('/login')
+      this.props.history.push('/')
   }else{
       const url="http://localhost/php_rest_myblog/api/post/read.php";
       const response=await fetch(url);

@@ -26,30 +26,31 @@ import MainPage from './MainPage';
 import Alkaram from './Alkaram';
 import AboutFullPage from './AboutFullPage';
 import BrandFullPage from './BrandFullPage'
-import khaadiUI from './KhaadiUI';
+import UI from './UI';
 
-import KhaadiUI from './KhaadiUI';
+import KhaadiUI from './UI';
+import ImgView from './ImgView';
 
 
 
 class Index extends Component{
-    constructor(props) {  
-        super(props);  
-  
-        this.state = {  
-        
-            edit: false
+
+//     constructor(props) {  
+//         super(props);  
+//         this.state = {  
+//             edit: false
      
-    }
-}
-componentDidMount(){
-    if(sessionStorage.getItem("userData")){
-        console.log("feed")
-    }
-    else{
-        this.setState({edit: true});
-    }
-}
+//     }
+// }
+// componentDidMount(){
+//     if(sessionStorage.getItem("userData")){
+//         console.log("feed")
+//     }
+//     else{
+//         this.setState({edit: true});
+
+//     }
+// }
 render(){
      return(
              <div>
@@ -57,6 +58,7 @@ render(){
    
 
                     <Router>
+                       
                     <TopNav/>
 
                     <Route exact path='/' component={Home} />
@@ -67,15 +69,16 @@ render(){
                     <Route path='/nishaat' component={Nishaat}/>
                     <Route path='/gulahmed' component={Gulahmed}/>
                     <Route path='/sanasafinaz' component={Sanasafinaz}/>
-                  
-          
+            
                    <Route path='/khaadi' component={Khaadi}/>
                    <Route path='/createApi' component={CreateApi}/>
                    <Route path='/createSapphire' component={CreateSapphire}/>
                    <Route path='/sapphire' component={Sapphire}/>
                    <Route path='/aboutfullpage' component={AboutFullPage}/>
                    <Route path='/brandfullpage' component={BrandFullPage}/>
-                   <Route path='/khaadiUI' component={KhaadiUI}/>
+                   <Route path='/UI' component={UI}/>
+                   <Route path='/imgView' component={ImgView}/>
+
                 
           </Router> 
         

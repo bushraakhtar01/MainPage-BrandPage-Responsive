@@ -1,18 +1,67 @@
 import React, { Component } from 'react';
-
-
-
-
 import {Link} from 'react-router-dom';
-import './scroll.js';
 import  './main.css';
 
 class TopNav extends Component{
        
+componentDidMount(){
+  document.addEventListener('scroll', function() {
+    // When the event DOMContentLoaded occurs, it is safe to access the DOM
+  
+    // When the user scrolls the page, execute myFunction 
+    window.addEventListener('scroll', myFunction);
+    var header = document.getElementById("container");
+var sticky = header.offsetTop;
+window.onscroll = function() {myFunction()};
 
+
+
+function myFunction() {
+  if (window.pageYOffset > sticky) {
+    header.classList.add("sticky");
+  } else {
+    header.classList.remove("sticky");
+  }
+}
+})
+
+
+document.addEventListener('scroll', function() {
+
+  window.addEventListener('scroll', scrollFunction);
+
+  var mybutton = document.getElementById("myBtn");
+
+  window.onscroll = function() {scrollFunction()};
+
+  
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+document.getElementById("myBtn").onclick = function 
+topFunction(){
+
+
+    if(window.scrollY!=0)
+    {
+        setTimeout(function() {
+           window.scrollTo(0,window.scrollY-30);
+            topFunction();
+        }, 10);
+     }
+  }
+
+})
+
+}
     render(){
         
-
+   
         return(
 
             <div className="container-fluid" id='container' >
@@ -29,19 +78,7 @@ class TopNav extends Component{
                   {/* sign in , register and cart row */}
 
                 <div className="row" >
-                  {/* <div className="col-md-11 col-9" style={{textAlign:'right'}} >  <i class="user outline icon"></i>
-                    <p style={{display:'inline-block'}}> Sign in &nbsp; /Register</p>
-                  </div>
-                  {/* <div className="col-md-2 col-3" style={{backgroundColor:'pink', textAlign:'center'}}><i class="edit outline icon"></i>
-                  
-                     Register
-                  </div> */}
-                   {/* <div className="col-md-1 col-3" style={{ textAlign:'left'}}>
-                      <i class="opencart icon"></i>
-                     <p style={{display:'inline-block'}}>Cart</p>
-                  </div>  */}
-
-                  <div className="col " id="signinpara"  >
+                 <div className="col " id="signinpara"  >
                      <ul style={{float:'right'}} >
                         <li className="login-cart"  ><i class="user outline large icon"></i> &nbsp; &nbsp; </li>
                         <li className="login-cart"><i class="shopping cart large icon"></i></li>
@@ -49,42 +86,7 @@ class TopNav extends Component{
                      </ul>
                   </div>
                    </div>
-                      {/* New arrivals , brands row */}
-
-                      {/* <div className="row" id="newarrivals" >
-                     <div className='col-md-4 col-4'  style={{textAlign:'right'}}>
-                     NEW ARRIVALS
-
-                     </div>
-                     <div className='col-md-1 col-4' style={{textAlign:'center'}} >
-                        FANCY
-
-                     </div>
-                     <div className='col-md-1 col-4' style={{textAlign:'center'}} >
-                        STITCHED
-
-                     </div>
-                     <div className='col-md-1 col-3' style={{textAlign:'center'}}>
-                       KURTI
-
-                     </div>
-                     <div className='col-md-1 col-3' style={{textAlign:'center'}}>
-                     UNSTITCHED
-
-
-                     </div>
-                     <div className='col-md-1 col-3' style={{textAlign:'center'}}>
-                        LAWN
-
-                     </div>
-               
-                     <div className='col-md-3 col-3' >
-                        Brands
-
-                     </div>
-                   
-
-               </div> */}
+                      
                <nav className="navbar navbar-expand-lg navbar-light " >
   <button  className="navbar-toggler navtogglebutton" type="button"  data-toggle="collapse"  data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"  ></span>
@@ -132,78 +134,3 @@ class TopNav extends Component{
 }
 export default TopNav;
 
-
-//  //import react libraries
-//  import React, { Component } from 'react';
-//  import {Link} from "react-router-dom";
-//  import './main.css';
-
-
-
-//  class TopNav extends Component{ 
-//    render(){
-//     return(
-
-//       <div >
-//         <div className="mainnavbardv" >
-//           {/* logo img */}
-//          <center><Link to='/mainpage'><img src="logo.jpg" className="mainlogo" ></img></Link></center> 
-               
-
-//                {/* right side text */}
-//          <div className="signin" > 
-
-//          <Link to='/login'> <p className="signinpara"  >  
-//            <i class="user outline icon"></i>Sign in</p></Link>
-
-//       <p className="registerpara" ><i class="edit outline icon">
-//         </i>Register</p>
-//       <p className="shoppingcartpara" ><i class="opencart icon"></i>Shopping Cart</p>
-  
-//          </div> 
-   
-//         </div>
-//   {/* nav */}
-// <center><nav className="mainnav" >
-//   <ul >
-//     <li className="newarrivalnav" >
-//       NEW ARRIVALS
-   
-//     </li>
-//     <li className="othersnav"  >
-//    UNSTITCHED
-   
-//     </li>
-//     <li className="othersnav" >
-//     STITCHED
-//     </li>
-//     <li className="othersnav" >
-//     LAWN
-   
-//     </li>
-//     <li className="othersnav" >
-//      FANCY
-   
-//     </li>
-//     <li className="othersnav" >
-//      KURTI
-   
-//     </li>
-//     <li className="othersnav" >
-//     <Link to='/brandfullpage'>BRANDS</Link> 
-   
-//     </li>
-//     <li className="brandnav" >
-//      </li>
-//   </ul>
-// </nav>
-// </center>
-
-// </div>
-//     );
-//    }
-     
- 
-//  }
-//  export default TopNav;
- 
